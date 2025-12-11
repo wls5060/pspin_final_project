@@ -5,9 +5,9 @@
 export PSPIN_SIM="verilator_model"
 
 #Update these!
-export RISCV_GCC=
-export PSPIN_HW=
-export PSPIN_RT=
+export RISCV_GCC=/tools/riscv-gcc/bin/
+export PSPIN_HW=/work/pspin/hw/
+export PSPIN_RT=/work/pspin/sw/
 
 #Don't change
 export TARGET_VSIM=${PSPIN_HW}/$PSPIN_SIM

@@ -47,7 +47,9 @@ __handler__ void aggregate_global_ph(handler_args_t *args)
     }
                               
     uint32_t my_cluster_id = args->cluster_id;
-    amo_add(&(scratchpad[my_cluster_id]), aggregator);
+    printf("address of scratchpad[%u]: %p, aggregator: %u\n, value %u", my_cluster_id, &(scratchpad[my_cluster_id]), aggregator, scratchpad[my_cluster_id]);
+    printf("size of scratchpad: %u\n", task->scratchpad_size[my_cluster_id]);
+    // amo_add(&(scratchpad[my_cluster_id]), aggregator);
 }
 
 __handler__ void aggregate_global_th(handler_args_t *args)

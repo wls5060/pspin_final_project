@@ -142,12 +142,12 @@ static void gdriver_generate_packets()
             for (uint32_t pkt_idx = 0; pkt_idx < sim_state.tgen.num_packets; pkt_idx++) {
                 pkt_size = sim_state.tgen.packet_size;
 
-                gdriver_fill_pkt(ectx_idx, global_msg_counter + msg_idx, global_packet_counter + pkt_idx,
+                gdriver_fill_pkt(ectx_idx, global_msg_counter, global_packet_counter,
                     pkt_buf, pkt_size, &l1_pkt_size);
                 is_last = (pkt_idx + 1 == sim_state.tgen.num_packets);
                 delay = (is_last) ? sim_state.tgen.message_delay : sim_state.tgen.packet_delay;
 
-                pspinsim_packet_add(&(sim_state.ectxs[ectx_idx].ectx), global_msg_counter + msg_idx,
+                pspinsim_packet_add(&(sim_state.ectxs[ectx_idx].ectx), global_msg_counter,
                     pkt_buf, pkt_size, l1_pkt_size, is_last, delay, 0);
 
                 sim_state.tgen.packets_sent++;

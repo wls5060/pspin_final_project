@@ -49,6 +49,7 @@ __handler__ void aggregate_global_ph(handler_args_t *args)
 
     uint32_t my_cluster_id = args->cluster_id;
     amo_add(&(scratchpad[my_cluster_id]), aggregator);
+    printf("Cluster %u added %u to scratchpad. New value: %u\n", my_cluster_id, aggregator, scratchpad[my_cluster_id]);
 }
 
 __handler__ void aggregate_global_th(handler_args_t *args)
@@ -93,7 +94,7 @@ __handler__ void reduce_l1_ph(handler_args_t *args)
 
     //reduce_mem_t *mem = (reduce_mem_t *)args->her->match_info.handler_mem;
     volatile int32_t *local_mem = (int32_t *)(task->scratchpad[args->cluster_id]);
-
+    printf("address of local_mem: %p\n", local_mem);
     //we assume the number of msg size divides the pkt payload size
     for (uint32_t i = 0; i < pkt_pld_len / 4; i++)
     {
